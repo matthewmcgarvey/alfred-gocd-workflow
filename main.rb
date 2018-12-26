@@ -50,7 +50,7 @@ def save_username(username)
 end
 
 def save_password(password)
-  `security add-generic-password -a ${USER} -s alfred-gocd-pw -w '#{password}''`
+  `security add-generic-password -a ${USER} -s alfred-gocd-pw -w '#{password}'`
 end
 
 def delete_username
