@@ -28,9 +28,11 @@ def send_request
 end
 
 def to_alfred_item(pipeline)
+  config = get_config
+  base_url = config['base_url']
   {
     title: pipeline['name'],
-    arg: "https://websystems.ramseysolutions.net/go/tab/pipeline/history/#{pipeline['name']}",
+    arg: "#{base_url}/go/tab/pipeline/history/#{pipeline['name']}",
     match: pipeline['name'].gsub(/[-_]/, ' ')
   }
 end
