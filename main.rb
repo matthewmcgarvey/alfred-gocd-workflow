@@ -85,7 +85,8 @@ if option == '--auth-un'
   exit
 elsif option == '--auth-pw'
   delete_password
-  save_password(ARGV[1])
+  pw = ARGV[1..(ARGV.length)].join(' ')
+  save_password(pw)
   exit
 elsif option == '--baseurl'
   update_base_url(ARGV[1])
