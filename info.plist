@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string></string>
+	<string>com.matthewmcg.gocd</string>
 	<key>connections</key>
 	<dict>
 		<key>0FD89AC5-BEBD-406C-B731-5690A9E63514</key>
@@ -60,9 +60,9 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string></string>
+	<string>Matthew McGarvey</string>
 	<key>description</key>
-	<string></string>
+	<string>Workflow to access GoCD pipelines</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
