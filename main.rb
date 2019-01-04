@@ -2,6 +2,9 @@ require 'net/http'
 require 'net/https'
 require 'json'
 
+$cache_file = '.pipelinecache'
+$config_file = '.config'
+
 # Request (GET )
 def send_request
   config = get_config
@@ -32,10 +35,13 @@ end
 def to_alfred_item(pipeline)
   config = get_config
   base_url = config['base_url']
+  url = "#{base_url}/go/tab/pipeline/history/#{pipeline['name']}"
   {
     title: pipeline['name'],
-    arg: "#{base_url}/go/tab/pipeline/history/#{pipeline['name']}",
-    match: pipeline['name'].gsub(/[-_]/, ' ')
+    arg: url,
+    uid: url,
+    subtitle: url,
+    valid: 'yes'
   }
 end
 
@@ -64,13 +70,15 @@ def delete_password
 end
 
 def get_config
-  JSON.parse(File.read('.config'))
-rescue StandardError
-  {}
+  if File.exist?($config_file)
+    JSON.parse(File.read($config_file))
+  else
+    {}
+  end
 end
 
 def save_config(config)
-  File.write('.config', JSON.pretty_generate(config))
+  File.write($config_file, JSON.pretty_generate(config))
 end
 
 def warn_if_not_setup
@@ -87,22 +95,46 @@ def warn_if_not_setup
   exit
 end
 
+def load_pipelines
+  if File.exist?($cache_file)
+    JSON.parse(File.read($cache_file))
+  else
+    pipelines = send_request.flat_map { |x| x['pipelines'] }
+    items = pipelines.map { |x| to_alfred_item(x) }
+    File.write('.pipelinecache', JSON.pretty_generate(items))
+    items
+  end
+end
+
+def refresh_pipelines
+  File.delete($cache_file) if File.exist?($cache_file)
+  load_pipelines
+  nil
+end
+
+def search_pipelines(query)
+  warn_if_not_setup
+  pipelines = load_pipelines
+  return pipelines if query.nil? || query.empty?
+
+  match = Regexp.new(query, 'i')
+  pipelines.select do |pipeline|
+    pipeline['title'] =~ match
+  end
+end
+
 option = ARGV[0]
 
 if option == '--auth-un'
   save_username(ARGV[1])
-  exit
 elsif option == '--auth-pw'
   delete_password
   pw = ARGV[1..(ARGV.length)].join(' ')
   save_password(pw)
-  exit
 elsif option == '--baseurl'
   save_base_url(ARGV[1])
-  exit
+elsif option == '--refresh'
+  refresh_pipelines
+else
+  puts({ items: search_pipelines(option || '') }.to_json)
 end
-
-warn_if_not_setup
-pipelines = send_request.flat_map { |x| x['pipelines'] }
-items = pipelines.map { |x| to_alfred_item(x) }
-puts({ items: items }.to_json)

@@ -58,6 +58,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>C300E156-4389-45E1-B42C-09447053891E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9F72E947-7D35-4CB6-A8B1-88A95C948064</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Matthew McGarvey</string>
@@ -92,7 +105,7 @@
 			<key>config</key>
 			<dict>
 				<key>alfredfiltersresults</key>
-				<true/>
+				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
 				<key>argumenttrimmode</key>
@@ -114,7 +127,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>ruby main.rb</string>
+				<string>ruby main.rb {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -267,6 +280,50 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>gocd-refresh</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Refresh GoCD Pipelines</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C300E156-4389-45E1-B42C-09447053891E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>ruby main.rb --refresh</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9F72E947-7D35-4CB6-A8B1-88A95C948064</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -307,6 +364,13 @@
 			<key>ypos</key>
 			<integer>460</integer>
 		</dict>
+		<key>9F72E947-7D35-4CB6-A8B1-88A95C948064</key>
+		<dict>
+			<key>xpos</key>
+			<integer>870</integer>
+			<key>ypos</key>
+			<integer>580</integer>
+		</dict>
 		<key>BE3F4788-B488-48A9-9CF6-A8D46D63AB73</key>
 		<dict>
 			<key>xpos</key>
@@ -320,6 +384,13 @@
 			<integer>600</integer>
 			<key>ypos</key>
 			<integer>460</integer>
+		</dict>
+		<key>C300E156-4389-45E1-B42C-09447053891E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>600</integer>
+			<key>ypos</key>
+			<integer>580</integer>
 		</dict>
 		<key>D7C7128F-051A-4567-9280-8D0019DA4A88</key>
 		<dict>
