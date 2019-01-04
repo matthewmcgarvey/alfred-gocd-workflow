@@ -6,6 +6,8 @@ require 'json'
 def send_request
   config = get_config
   base_url = config['base_url']
+  username = config['username']
+  password = get_password
   uri = URI("#{base_url}/go/api/config/pipeline_groups")
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)
@@ -37,47 +39,46 @@ def to_alfred_item(pipeline)
   }
 end
 
-def username
-  `security find-generic-password -s alfred-gocd-un -w`.strip
-end
-
-def password
+def get_password
   `security find-generic-password -s alfred-gocd-pw -w`.strip
 end
 
 def save_username(username)
-  `security add-generic-password -a ${USER} -s alfred-gocd-un -w #{username}`
+  config = get_config
+  config['username'] = username
+  save_config(config)
 end
 
 def save_password(password)
   `security add-generic-password -a ${USER} -s alfred-gocd-pw -w '#{password}'`
 end
 
-def delete_username
-  `security delete-generic-password -s alfred-gocd-un`
+def save_base_url(base_url)
+  config = get_config
+  config['base_url'] = base_url
+  save_config(config)
 end
 
 def delete_password
   `security delete-generic-password -s alfred-gocd-pw`
 end
 
-def update_base_url(url)
-  config = get_config
-  config['base_url'] = url
-  save_config(config)
-end
-
 def get_config
-  JSON.parse(File.read('./config.json'))
+  JSON.parse(File.read('.config'))
 rescue StandardError
   {}
 end
 
 def save_config(config)
-  File.open('./config.json', 'w+') { |f| f.write(JSON.dump(config)) }
+  File.write('.config', JSON.pretty_generate(config))
 end
 
-def warn_no_config
+def warn_if_not_setup
+  config = get_config
+  username = config['username']
+  return unless config.nil? || config.empty?
+  return unless username.nil?
+
   puts({
     items: [{
       title: 'You must setup this workflow before using it.'
@@ -89,7 +90,6 @@ end
 option = ARGV[0]
 
 if option == '--auth-un'
-  delete_username
   save_username(ARGV[1])
   exit
 elsif option == '--auth-pw'
@@ -98,11 +98,11 @@ elsif option == '--auth-pw'
   save_password(pw)
   exit
 elsif option == '--baseurl'
-  update_base_url(ARGV[1])
+  save_base_url(ARGV[1])
   exit
 end
 
-warn_no_config if get_config.empty?
+warn_if_not_setup
 pipelines = send_request.flat_map { |x| x['pipelines'] }
 items = pipelines.map { |x| to_alfred_item(x) }
 puts({ items: items }.to_json)
