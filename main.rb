@@ -77,6 +77,15 @@ def save_config(config)
   File.open('./config.json', 'w+') { |f| f.write(JSON.dump(config)) }
 end
 
+def warn_no_config
+  puts({
+    items: [{
+      title: 'You must setup this workflow before using it.'
+    }]
+  }.to_json)
+  exit
+end
+
 option = ARGV[0]
 
 if option == '--auth-un'
@@ -93,6 +102,7 @@ elsif option == '--baseurl'
   exit
 end
 
+warn_no_config if get_config.empty?
 pipelines = send_request.flat_map { |x| x['pipelines'] }
 items = pipelines.map { |x| to_alfred_item(x) }
 puts({ items: items }.to_json)
