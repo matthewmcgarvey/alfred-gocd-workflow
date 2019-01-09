@@ -1,3 +1,5 @@
 .config
 .pipelinecache
 lib/
+*.dwarf
+workflow/main

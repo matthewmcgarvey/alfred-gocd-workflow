@@ -3,7 +3,7 @@ version: 0.4.0
 
 dependencies:
   weird_al:
-    path: /Users/matthew/workspace/crystal/weird_al
+    path: /Users/matthew.mcgarvey/workspace/junk/weird_al
   halite:
     github: icyleaf/halite
 

@@ -20,8 +20,8 @@ def load_pipelines
   password = Workflow.get_password("alfred-gocd-pw")
 
   response = Halite.basic_auth(user: username, pass: password).get(url)
-  pipelines = JSON.parse(response.body)
-  items = pipelines.as_a.map do |pipeline|
+  pipelines = JSON.parse(response.body).as_a.flat_map { |group| group["pipelines"].as_a }
+  items = pipelines.map do |pipeline|
     item = Item.new pipeline["name"].as_s
     pipeline_url = "#{base_url}/go/tab/pipeline/history/#{item.title}"
     item.arg = pipeline_url
@@ -57,6 +57,10 @@ handle "--refresh" do |args|
   Workflow.delete_data("pipelines")
   load_pipelines
   nil
+end
+
+handle do |args|
+  load_pipelines
 end
 
 handle /.*/ do |args|
