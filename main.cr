@@ -64,7 +64,9 @@ handle do |args|
 end
 
 handle /.*/ do |args|
-  load_pipelines
+  pipelines = load_pipelines
+  query = args[0]
+  Workflow.search(query, pipelines, &.title)
 end
 
-puts Workflow.run
+Workflow.run
