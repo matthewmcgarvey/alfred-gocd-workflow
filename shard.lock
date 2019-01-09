@@ -1,0 +1,10 @@
+version: 1.0
+shards:
+  halite:
+    github: icyleaf/halite
+    version: 0.9.0
+
+  weird_al:
+    path: /Users/matthew/workspace/crystal/weird_al
+    version: 0.2.0
+
