@@ -2,11 +2,23 @@ require "weird_al"
 require "halite"
 include WeirdAl
 
+def warn_if_not_configured
+  Workflow.warn("You must configure the workflow before using it.") unless configured?
+end
+
+def configured?
+  !get_config.empty? && Workflow.get_password("alfred-gocd-pw")
+end
+
 def get_config
   data = Workflow.load_data("config")
   data ? 
     Hash(String, String).from_json(data) 
     : {} of String => String
+end
+
+def get_password
+  Workflow.get_password("alfred-gocd-pw").as(String)
 end
 
 def load_pipelines
@@ -17,7 +29,7 @@ def load_pipelines
   base_url = config["base_url"]
   url = "#{base_url}/go/api/config/pipeline_groups"
   username = config["username"]
-  password = Workflow.get_password("alfred-gocd-pw")
+  password = get_password
 
   response = Halite.basic_auth(user: username, pass: password).get(url)
   pipelines = JSON.parse(response.body).as_a.flat_map { |group| group["pipelines"].as_a }
@@ -54,16 +66,19 @@ handle "--baseurl" do |args|
 end
 
 handle "--refresh" do |args|
+  warn_if_not_configured
   Workflow.delete_data("pipelines")
   load_pipelines
   nil
 end
 
 handle do |args|
+  warn_if_not_configured
   load_pipelines
 end
 
 handle /.*/ do |args|
+  warn_if_not_configured
   pipelines = load_pipelines
   query = args[0]
   Workflow.search(query, pipelines, &.title)

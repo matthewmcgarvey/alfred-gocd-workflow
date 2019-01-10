@@ -3,7 +3,8 @@ version: 0.4.0
 
 dependencies:
   weird_al:
-    path: /Users/matthew.mcgarvey/workspace/junk/weird_al
+    github: matthewmcgarvey/weird_al
+    branch: master
   halite:
     github: icyleaf/halite
 
