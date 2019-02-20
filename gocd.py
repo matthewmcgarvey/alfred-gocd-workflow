@@ -1,6 +1,6 @@
 # encoding: utf-8
 import sys
-from workflow import Workflow3, ICON_WEB, web
+from workflow import Workflow3, ICON_WEB, web, ICON_WARNING, ICON_ERROR
 
 def get_config(wf):
     config = wf.stored_data('config')
@@ -15,29 +15,38 @@ def get_password(wf):
     try:
         return wf.get_password("alfred-gocd-pw")
     except:
-        return None
+        wf.add_item("You must supply a password", icon=ICON_ERROR)
+        wf.send_feedback()
+        sys.exit(1)
 
 def save_password(wf, pw):
     wf.save_password("alfred-gocd-pw", pw)
 
-def configured(wf):
-    return (not (not get_config(wf))) and (get_password(wf) is not None)
-
-def warn_if_not_configured(wf):
-    if not configured(wf):
-        wf.add_item("You must configure the workflow before using it.", icon=ICON_WARNING)
+def get_username(config):
+    username = config.get('username')
+    if username is None:
+        wf.add_item("You must supply a username", icon=ICON_ERROR)
         wf.send_feedback()
         sys.exit(1)
+    else:
+        return username
 
-def load_pipelines(wf):
-    data = wf.stored_data("pipelines")
-    if data is not None and len(data):
-        wf._items = data
-        return
-    config = get_config(wf)
-    base_url = config["base_url"]
+def get_base_url(config):
+    base_url = config.get('base_url')
+    if base_url is None:
+        wf.add_item("You must supply a base url", icon=ICON_ERROR)
+        wf.send_feedback()
+        sys.exit(1)
+    else:
+        return base_url
+
+def load_pipelines(wf, config):
+    stored_pipelines = wf.stored_data("pipelines") # ["spring-extensions", "skybridge"]
+    if stored_pipelines is not None and len(stored_pipelines):
+        return stored_pipelines
+    base_url = get_base_url(config)
     url = "%s/go/api/config/pipeline_groups" % base_url
-    username = config["username"]
+    username = get_username(config)
     password = get_password(wf)
 
     r = web.get(url, auth=(username, password))
@@ -46,23 +55,27 @@ def load_pipelines(wf):
     pipelines = [pipeline['name']
                     for group in data
                     for pipeline in group['pipelines']]
-    items = []
-    for pipeline in pipelines:
-        pipeline_url = "%s/go/tab/pipeline/history/%s" % (base_url, pipeline)
-        item = wf.add_item(title=pipeline,
-                            subtitle=pipeline_url,
-                            arg=pipeline_url,
-                            uid=pipeline_url,
-                            valid=True)
-        items.append(item)
-    wf.store_data('pipelines', items)
+    wf.store_data('pipelines', pipelines)
+    return pipelines
 
+def add_item(wf, pipeline, base_url):
+    pipeline_url = "%s/go/tab/pipeline/history/%s" % (base_url, pipeline)
+    wf.add_item(title=pipeline,
+                subtitle=pipeline_url,
+                arg=pipeline_url,
+                uid=pipeline_url,
+                valid=True)
+
+def add_items(wf, pipelines, base_url):
+    for pipeline in pipelines:
+        add_item(wf, pipeline, base_url)
 
 def main(wf):
     args = wf.args
+    config = get_config(wf)
     if not args:
-        warn_if_not_configured(wf)
-        load_pipelines(wf)
+        pipelines = load_pipelines(wf, config)
+        add_items(wf, pipelines, get_base_url(config))
         wf.send_feedback()
         return
 
@@ -70,7 +83,6 @@ def main(wf):
     
     if keyword_arg == '--auth-un':
         username = args[1]
-        config = get_config(wf)
         config['username'] = username
         save_config(wf, config)
         return
@@ -80,23 +92,21 @@ def main(wf):
         return
     elif keyword_arg == '--baseurl':
         base_url = args[1]
-        config = get_config(wf)
         config['base_url'] = base_url
         save_config(wf, config)
         return
     elif keyword_arg == "--refresh":
-        warn_if_not_configured(wf)
         wf.clear_data(lambda f: "pipelines" in f)
-        load_pipelines(wf)
+        load_pipelines(wf, config)
         return
     else:
         query = keyword_arg
-        pipelines = wf.stored_data("pipelines")
+        pipelines = load_pipelines(wf, config)
         items = wf.filter(query, pipelines)
         if not items:
             wf.add_item('No matches', icon=ICON_WARNING)
-        for item in items:
-            wf.add_item(title=item['title'], subtitle=item['subtitle'], arg=item['arg'], uid=item['uid'], valid=True)
+        else:
+            add_items(wf, items, get_base_url(config))
         wf.send_feedback()
 
 
