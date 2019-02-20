@@ -6,11 +6,11 @@
 	<string>com.matthewmcg.gocd</string>
 	<key>connections</key>
 	<dict>
-		<key>0FD89AC5-BEBD-406C-B731-5690A9E63514</key>
+		<key>728B1268-B13B-480A-A753-1A04EC815813</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>BE3F4788-B488-48A9-9CF6-A8D46D63AB73</string>
+				<string>6A04DBB2-9D6A-40AE-AE4D-B256006A4E88</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -19,11 +19,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>38CD09B3-A2BE-4F67-BA7D-D328031D42F3</key>
+		<key>A3113275-F038-41FA-B9FC-66E8DB2EDBB4</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1B78479D-A79A-4336-A0F7-4D8D1E1DFD7A</string>
+				<string>28C44D57-13A1-46F7-9793-886AD07BFF6F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -32,11 +32,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>4B5B0F6D-E6FC-4E1D-AF13-D0105FBE6A77</key>
+		<key>C39829F0-BA74-4812-AB21-5EBCF1B085DE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D7C7128F-051A-4567-9280-8D0019DA4A88</string>
+				<string>6B82D66C-C35F-415F-9B87-8AD1AB9D034D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -45,11 +45,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>BF9982D2-96A5-4A1D-88CD-34AD23F7745A</key>
+		<key>E62D66B0-041A-4AC1-8135-AFC1D3962900</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>51B2736B-9E42-4AAC-9DD9-6B6A4763E0FF</string>
+				<string>D460FDF5-5020-45F7-AE48-C84D94D639FF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -58,11 +58,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>C300E156-4389-45E1-B42C-09447053891E</key>
+		<key>F32B16BE-138F-4523-960F-775878AA1D76</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9F72E947-7D35-4CB6-A8B1-88A95C948064</string>
+				<string>F7E06437-96E8-4AE7-82A4-237FD0B7403F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -75,13 +75,60 @@
 	<key>createdby</key>
 	<string>Matthew McGarvey</string>
 	<key>description</key>
-	<string>Workflow to access GoCD pipelines</string>
+	<string></string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>GoCD</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>gocd</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Unfortunately this is a slow operation so be patient...</string>
+				<key>script</key>
+				<string>python gocd.py $1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Check It Out</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F32B16BE-138F-4523-960F-775878AA1D76</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -97,186 +144,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>BE3F4788-B488-48A9-9CF6-A8D46D63AB73</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>gocd</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>./main {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>0FD89AC5-BEBD-406C-B731-5690A9E63514</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>gocd-password</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>gocd-password PASSWORD</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>38CD09B3-A2BE-4F67-BA7D-D328031D42F3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>./main --auth-pw {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>1B78479D-A79A-4336-A0F7-4D8D1E1DFD7A</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>gocd-username</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>gocd-username USERNAME</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>4B5B0F6D-E6FC-4E1D-AF13-D0105FBE6A77</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>./main --auth-un {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D7C7128F-051A-4567-9280-8D0019DA4A88</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>./main --baseurl {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>51B2736B-9E42-4AAC-9DD9-6B6A4763E0FF</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>gocd-baseurl</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>gocd-baseurl BASEURL</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>BF9982D2-96A5-4A1D-88CD-34AD23F7745A</string>
+			<string>F7E06437-96E8-4AE7-82A4-237FD0B7403F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -284,20 +152,20 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>keyword</key>
-				<string>gocd-refresh</string>
+				<string>gocd-un</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>Refresh GoCD Pipelines</string>
+				<string>Username for GoCD</string>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>C300E156-4389-45E1-B42C-09447053891E</string>
+			<string>C39829F0-BA74-4812-AB21-5EBCF1B085DE</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -309,9 +177,9 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./main --refresh</string>
+				<string>python gocd.py --auth-un {query}</string>
 				<key>scriptargtype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
@@ -320,84 +188,216 @@
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>9F72E947-7D35-4CB6-A8B1-88A95C948064</string>
+			<string>6B82D66C-C35F-415F-9B87-8AD1AB9D034D</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python gocd.py --auth-pw {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D460FDF5-5020-45F7-AE48-C84D94D639FF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>gocd-pw</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Password for GoCD</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E62D66B0-041A-4AC1-8135-AFC1D3962900</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>gocd-baseurl</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Base URL for GoCD</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>728B1268-B13B-480A-A753-1A04EC815813</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python gocd.py --baseurl {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>6A04DBB2-9D6A-40AE-AE4D-B256006A4E88</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python gocd.py --refresh</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>28C44D57-13A1-46F7-9793-886AD07BFF6F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>gocd-refresh</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Refresh GoCD pipeline list</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A3113275-F038-41FA-B9FC-66E8DB2EDBB4</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>0FD89AC5-BEBD-406C-B731-5690A9E63514</key>
+		<key>28C44D57-13A1-46F7-9793-886AD07BFF6F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>600</integer>
-			<key>ypos</key>
-			<integer>70</integer>
-		</dict>
-		<key>1B78479D-A79A-4336-A0F7-4D8D1E1DFD7A</key>
-		<dict>
-			<key>xpos</key>
-			<integer>870</integer>
-			<key>ypos</key>
-			<integer>200</integer>
-		</dict>
-		<key>38CD09B3-A2BE-4F67-BA7D-D328031D42F3</key>
-		<dict>
-			<key>xpos</key>
-			<integer>600</integer>
-			<key>ypos</key>
-			<integer>200</integer>
-		</dict>
-		<key>4B5B0F6D-E6FC-4E1D-AF13-D0105FBE6A77</key>
-		<dict>
-			<key>xpos</key>
-			<integer>600</integer>
-			<key>ypos</key>
-			<integer>340</integer>
-		</dict>
-		<key>51B2736B-9E42-4AAC-9DD9-6B6A4763E0FF</key>
-		<dict>
-			<key>xpos</key>
-			<integer>870</integer>
-			<key>ypos</key>
-			<integer>460</integer>
-		</dict>
-		<key>9F72E947-7D35-4CB6-A8B1-88A95C948064</key>
-		<dict>
-			<key>xpos</key>
-			<integer>870</integer>
+			<integer>430</integer>
 			<key>ypos</key>
 			<integer>580</integer>
 		</dict>
-		<key>BE3F4788-B488-48A9-9CF6-A8D46D63AB73</key>
+		<key>6A04DBB2-9D6A-40AE-AE4D-B256006A4E88</key>
 		<dict>
 			<key>xpos</key>
-			<integer>870</integer>
+			<integer>430</integer>
 			<key>ypos</key>
-			<integer>70</integer>
+			<integer>440</integer>
 		</dict>
-		<key>BF9982D2-96A5-4A1D-88CD-34AD23F7745A</key>
+		<key>6B82D66C-C35F-415F-9B87-8AD1AB9D034D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>600</integer>
+			<integer>430</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>160</integer>
 		</dict>
-		<key>C300E156-4389-45E1-B42C-09447053891E</key>
+		<key>728B1268-B13B-480A-A753-1A04EC815813</key>
 		<dict>
 			<key>xpos</key>
-			<integer>600</integer>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>440</integer>
+		</dict>
+		<key>A3113275-F038-41FA-B9FC-66E8DB2EDBB4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
 			<key>ypos</key>
 			<integer>580</integer>
 		</dict>
-		<key>D7C7128F-051A-4567-9280-8D0019DA4A88</key>
+		<key>C39829F0-BA74-4812-AB21-5EBCF1B085DE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>870</integer>
+			<integer>250</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>160</integer>
+		</dict>
+		<key>D460FDF5-5020-45F7-AE48-C84D94D639FF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>300</integer>
+		</dict>
+		<key>E62D66B0-041A-4AC1-8135-AFC1D3962900</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>300</integer>
+		</dict>
+		<key>F32B16BE-138F-4523-960F-775878AA1D76</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+		<key>F7E06437-96E8-4AE7-82A4-237FD0B7403F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>20</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
