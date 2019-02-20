@@ -3,3 +3,4 @@
 lib/
 *.dwarf
 workflow/main
+**/*.pyc
