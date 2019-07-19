@@ -6,6 +6,29 @@
 	<string>com.matthewmcg.gocd</string>
 	<key>connections</key>
 	<dict>
+		<key>28C44D57-13A1-46F7-9793-886AD07BFF6F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EBE9D35E-D25A-4282-9A17-F289A0A6A8DC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>BF1E6989-E14E-4EA9-BB64-F486597233C3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>728B1268-B13B-480A-A753-1A04EC815813</key>
 		<array>
 			<dict>
@@ -23,7 +46,33 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>BD227D62-0563-4E29-8866-3F493C81AFBD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BD227D62-0563-4E29-8866-3F493C81AFBD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>28C44D57-13A1-46F7-9793-886AD07BFF6F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BF1E6989-E14E-4EA9-BB64-F486597233C3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2758EE80-DCC1-412C-8F90-49C9360C2206</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -45,11 +94,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>E62D66B0-041A-4AC1-8135-AFC1D3962900</key>
+		<key>EBE9D35E-D25A-4282-9A17-F289A0A6A8DC</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D460FDF5-5020-45F7-AE48-C84D94D639FF</string>
+				<string>F7710CEE-C8E3-4A5B-9BFB-694E23C8D260</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -200,7 +249,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python gocd.py --auth-pw {query}</string>
+				<string>python gocd.py --baseurl {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -211,30 +260,9 @@
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>D460FDF5-5020-45F7-AE48-C84D94D639FF</string>
+			<string>6A04DBB2-9D6A-40AE-AE4D-B256006A4E88</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>gocd-pw</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Password for GoCD</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>E62D66B0-041A-4AC1-8135-AFC1D3962900</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -260,25 +288,42 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>lastpathcomponent</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>python gocd.py --baseurl {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
 				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>title</key>
+				<string>GoCD Pipelines Refreshed</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>6A04DBB2-9D6A-40AE-AE4D-B256006A4E88</string>
+			<string>F7710CEE-C8E3-4A5B-9BFB-694E23C8D260</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>success</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>EBE9D35E-D25A-4282-9A17-F289A0A6A8DC</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -288,7 +333,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>python gocd.py --refresh</string>
+				<string>python gocd.py --refresh {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -324,24 +369,88 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  set myPassword to (text returned of (display dialog "Enter your password" default answer "" with title "Password" with hidden answer))
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>BD227D62-0563-4E29-8866-3F493C81AFBD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Debug the workflow to find out the reason</string>
+				<key>title</key>
+				<string>Error refreshing GoCD pipelines</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>2758EE80-DCC1-412C-8F90-49C9360C2206</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>failure</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>BF1E6989-E14E-4EA9-BB64-F486597233C3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>2758EE80-DCC1-412C-8F90-49C9360C2206</key>
+		<dict>
+			<key>xpos</key>
+			<integer>970</integer>
+			<key>ypos</key>
+			<integer>510</integer>
+		</dict>
 		<key>28C44D57-13A1-46F7-9793-886AD07BFF6F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>600</integer>
 			<key>ypos</key>
-			<integer>580</integer>
+			<integer>460</integer>
 		</dict>
 		<key>6A04DBB2-9D6A-40AE-AE4D-B256006A4E88</key>
 		<dict>
 			<key>xpos</key>
 			<integer>430</integer>
 			<key>ypos</key>
-			<integer>440</integer>
+			<integer>310</integer>
 		</dict>
 		<key>6B82D66C-C35F-415F-9B87-8AD1AB9D034D</key>
 		<dict>
@@ -355,14 +464,28 @@
 			<key>xpos</key>
 			<integer>250</integer>
 			<key>ypos</key>
-			<integer>440</integer>
+			<integer>310</integer>
 		</dict>
 		<key>A3113275-F038-41FA-B9FC-66E8DB2EDBB4</key>
 		<dict>
 			<key>xpos</key>
 			<integer>250</integer>
 			<key>ypos</key>
-			<integer>580</integer>
+			<integer>460</integer>
+		</dict>
+		<key>BD227D62-0563-4E29-8866-3F493C81AFBD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>460</integer>
+		</dict>
+		<key>BF1E6989-E14E-4EA9-BB64-F486597233C3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>780</integer>
+			<key>ypos</key>
+			<integer>540</integer>
 		</dict>
 		<key>C39829F0-BA74-4812-AB21-5EBCF1B085DE</key>
 		<dict>
@@ -371,19 +494,12 @@
 			<key>ypos</key>
 			<integer>160</integer>
 		</dict>
-		<key>D460FDF5-5020-45F7-AE48-C84D94D639FF</key>
+		<key>EBE9D35E-D25A-4282-9A17-F289A0A6A8DC</key>
 		<dict>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>780</integer>
 			<key>ypos</key>
-			<integer>300</integer>
-		</dict>
-		<key>E62D66B0-041A-4AC1-8135-AFC1D3962900</key>
-		<dict>
-			<key>xpos</key>
-			<integer>250</integer>
-			<key>ypos</key>
-			<integer>300</integer>
+			<integer>420</integer>
 		</dict>
 		<key>F32B16BE-138F-4523-960F-775878AA1D76</key>
 		<dict>
@@ -391,6 +507,13 @@
 			<integer>250</integer>
 			<key>ypos</key>
 			<integer>20</integer>
+		</dict>
+		<key>F7710CEE-C8E3-4A5B-9BFB-694E23C8D260</key>
+		<dict>
+			<key>xpos</key>
+			<integer>970</integer>
+			<key>ypos</key>
+			<integer>390</integer>
 		</dict>
 		<key>F7E06437-96E8-4AE7-82A4-237FD0B7403F</key>
 		<dict>
