@@ -524,6 +524,6 @@ end alfred_script</string>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/matthewmcgarvey/alfred-gocd-workflow</string>
 </dict>
 </plist>
