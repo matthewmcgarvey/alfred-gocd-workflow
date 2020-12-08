@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.matthewmcg.gocd</string>
+	<string>com.lampo.gocd</string>
 	<key>connections</key>
 	<dict>
 		<key>28C44D57-13A1-46F7-9793-886AD07BFF6F</key>
@@ -524,6 +524,6 @@ end alfred_script</string>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string>https://github.com/matthewmcgarvey/alfred-gocd-workflow</string>
+	<string>https://github.com/lampo/alfred-gocd-workflow</string>
 </dict>
 </plist>

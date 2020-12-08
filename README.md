@@ -2,7 +2,7 @@
 
 ## Installation
 
-Download the latest release from the [releases section](https://github.com/matthewmcgarvey/alfred-gocd-workflow/releases).
+Download the latest release from the [releases section](https://github.com/lampo/alfred-gocd-workflow/releases).
 Just click on the `GoCD.alfredworkflow` to download.
 
 ## Setup
